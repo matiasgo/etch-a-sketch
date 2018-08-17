@@ -27,7 +27,7 @@
 
     			div.style.filter = 'brightness(' + brightness + '%'
     			div.addEventListener("mouseenter", function changeColor(event) {
-    				event.target.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16) //'#0dbc3e'
+    				event.target.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16)
     			})
     			document.getElementById('container').appendChild(div);
 			}
@@ -43,7 +43,7 @@
 		}
 
 		document.getElementById('reset').addEventListener("click", function resetTable(){
-			newNum = prompt("Enter new grid dimension")
+			newNum = prompt("Enter new grid dimension (1-200)")
 			gridDestruction();
 			makeDiv(newNum*newNum);
 		});
