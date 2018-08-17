@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel='stylesheet' href='styles.css'>
+	</head>
+	<body>
+		<div class="btnhldr">
+			<button id='reset'>Reset</button>
+		</div>
+		<div class='container' id='container'></div>
+	</body>
+	<script type="text/javascript">
+		
+		var num = 16
+
+		console.log('#'+(Math.random()*0xFFFFFF<<0).toString(16));
+
+		function makeDiv(num) {	
+			var i;
+			for (i = 0; i < num; i++) { 
+    			var div = document.createElement('div');
+    			div.className = 'cell'
+    			div.style.flexBasis = "" + (100/(Math.pow(num,.5))) + '%'
+    			div.style.paddingTop = "" + (100/(Math.pow(num,.5))) + '%'
+    			
+    			var brightness = 100
+
+    			div.style.filter = 'brightness(' + brightness + '%'
+    			div.addEventListener("mouseenter", function changeColor(event) {
+    				event.target.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16) //'#0dbc3e'
+    			})
+    			document.getElementById('container').appendChild(div);
+			}
+		};
+
+		makeDiv(num*num);
+
+		function gridDestruction() {
+  			const oldCells = document.querySelectorAll('.cell');
+			oldCells.forEach( cell => {
+				container.removeChild(cell);
+			});
+		}
+
+		document.getElementById('reset').addEventListener("click", function resetTable(){
+			newNum = prompt("Enter new grid dimension")
+			gridDestruction();
+			makeDiv(newNum*newNum);
+		});
+
+	</script>
+</html>
